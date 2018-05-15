@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration:none;
+
+}
+//
+$color-purple: #675E98;
+$color-lightpurple: #A19CC1;
+$color-text: #50555B;
+$color-background: #F0F1F0;
+
+body {
+  background: $color-background;
+  min-width: 767px;
+}
+
+header {
+  background: $color-purple;
+  color: white;
+  width: 100vw;
+min-width: 767px;
+  height: 95px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.circ,
+.head-title,
+.nav,
+.title {
+  display: inline-block;
+}
+
+.top-wrapper {
+  padding: 15px 0 5px 20px;
+
+  .title {
+    vertical-align: middle;
+
+    span {
+      font-size: 18px;
+    }
+
+    .head-title {
+      font-size: 20px;
+    }
+  }
+}
+
+.nav {
+  padding-left: 20px;
+  font-size: 15px;
+  width:70%;
+  li{
+    display:inline-block;
+  }
+
+  li a{
+
+    margin-right: 20px;
+    color: $color-lightpurple;
+    cursor: pointer;
+  }
+}
+
+.circ {
+  text-align: center;
+  line-height: 28px;
+  color: white;
+  height: 28px;
+  width: 28px;
+  margin: auto;
+  border: 1.2px solid white;
+  border-radius: 50%;
+  font-size: 13px;
+
+  span {
+    vertical-align: top;
+  }
+}
+
+main {
+  margin-top: 90px;
+
+  .pic-wrapper {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .content {
+    h1 {
+      margin-bottom: 20px;
+      font-size: 50px;
+      line-height: 50px;
+    }
+    margin: 0 120px;
+    color: $color-text;
+    line-height: 40px;
+    font-size: 20px;
+  }
+}
+
+.common {
+  margin: 100px 120px;
+  font-family: sans-serif;
+  .common-wrapper {
+    display: flex;
+
+    .common-left {
+      width: 50%;
+margin-right: 10px;
+      input {
+        display: flex;
+        width: 100%;
+        height:30px;
+        outline: none;
+        border: none;
+        box-shadow: 0 1px 1px rgba(black, 0.1);
+        box-shadow: 0 1px 1px rgba(black, 0.1);
+        border-radius: 8px;
+        margin-bottom: 10px;
+
+        padding-left: 10px;
+      }
+    }
+
+    .common-right {
+      width: 50%;
+
+      textarea {
+        width: 100%;
+        height:110px;
+        padding-bottom: 10px;
+        outline: none;
+        border: none;
+        box-shadow: 0 1px 1px rgba(black, 0.1);
+        border-radius: 8px;
+        resize:none;
+        padding-left: 10px;
+        padding-top: 10px;
+      }
+    }
+
+  }
+  #input-submit{
+   width:100%;
+   outline: none;
+   border: none;
+   background: $color-purple;
+   color:white;
+   border-radius: 8px;
+   height:30px;
+   margin-top:10px;
+   cursor: pointer;
+   box-shadow: 0 1px 1px rgba(black, 0.1);
+  }
+  @media (max-width: 767px) {
+    .common-wrapper{
+      display: flex;
+      flex-direction: column;
+      width:100%;
+      .common-left,.common-right{
+        width: 100%
+      }
+    }
+  }
+
+
+}

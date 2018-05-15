@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app='app'>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="./style/css/articlePage.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+  <script type="text/javascript">
+    window.onload = () => {
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          dataGroup: [],
+        },
+        methods: {
+          renderArticle() {
+            this.$http.get('/', {
+
+            }).then((res) => {
+              this.dataGroup = res.data;
+            }, (res) => {
+              alert(res.status)
+            })
+
+          },
+        },
+        created() {
+          this.renderArticle('/')
+
+        }
+      })
+    }
+  </script>
+</head>
+
+<body>
+  <div id="app">
+
+    <header id='top-bar'>
+      <div class="top-wrapper">
+        <div class="circ">
+          <span>{</span><span>}</span>
+        </div>
+        <div class="title">
+          <span>|</span>
+          <h1 class='head-title'>Front End Develop</h1>
+        </div>
+      </div>
+      <nav class='nav'>
+        <li><a href="###">Javascript</a></li>
+        <li><a href="###">Node.jss</a></li>
+        <li><a href="###">Vue.js</a></li>
+        <li><a href="###">React</a></li>
+        <li><a href="###">CSS/SASS</a></li>
+        <li><a href="###">Webpack</a></li>
+        <li><a href="###">Mysql</a></li>
+      </nav>
+    </header>
+    <main>
+      {{dataGroup}}
+      <div class="pic-wrapper">
+        <img src="../img/street.png" alt="illustration" class='illustration'>
+      </div>
+      <section class='content'>
+        <h1></h1>
+        <p></p>
+      </section>
+
+    </main>
+
+    <section>
+      <article class="">
+        <figure>
+          <img src="" alt="">
+          <figcaption>
+            <span></span>
+          </figcaption>
+        </figure>
+      </article>
+      <article class="">
+        <figure>
+          <img src="" alt="">
+          <figcaption>
+            <span></span>
+          </figcaption>
+        </figure>
+      </article>
+      <article class="">
+        <figure>
+          <img src="" alt="">
+          <figcaption>
+            <span></span>
+          </figcaption>
+        </figure>
+      </article>
+    </section>
+    <div id="comment">
+      <form class="common">
+        <div class="common-wrapper">
+          <div class="common-left half">
+            <input type="text" id="input-name" placeholder="昵称">
+            <input type="email" id="input-email" placeholder="邮箱地址">
+            <input type="text" id="input-subject" placeholder="个人主页">
+          </div>
+          <div class="common-right half">
+            <textarea name="message" type="text" id="input-message" placeholder="评论内容"></textarea>
+          </div>
+        </div>
+
+        <input type="submit" value="提交评论" id="input-submit">
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

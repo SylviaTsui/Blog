@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+    * {
+      text-decoration: none;
+      list-style: none;
+      color: black;
+
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- <script type="text/javascript" src='./static/js/home.js'></script> -->
+  <script type="text/javascript">
+    window.onload = () => {
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          message: 'hello vue',
+          dataGroup: [],
+
+        },
+        methods: {
+          renderArticle(url) {
+            axios.get(url, {
+
+            }).then((res) => {
+              this.dataGroup = res.data;
+            }, (res) => {
+              console.log(error);
+            })
+          }
+        },
+        components: {
+          'all': {
+            data() {
+              return {
+                rootMsg:'',
+              }
+            },
+            template: '#test'
+          }
+        },
+
+        created() {
+          this.renderArticle('/home')
+        }
+      })
+    }
+
+
+  </script>
+</head>
+
+<body>
+  <div id='app'>
+    <nav>
+      <div class='nav-left'>
+        <img src="" alt="logo之类的吧">
+        <span>博客</span>
+      </div>
+      <div class='nav-right'>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <header>
+      <h1>这是标题</h1>
+      <figure>
+        <img src="" alt="头图">
+        <figcaption>配搭头图的一段装b文字</figcaption>
+      </figure>
+      <nav>
+        <ul>
+          <li><a href="###" @click="renderArticle('/js')">Javascript</a></li>
+          <li><a href="###" @click="renderArticle('/node')">Node.jss</a></li>
+          <li><a href="###" @click="renderArticle('/vue')">Vue.js</a></li>
+          <li><a href="###" @click="renderArticle('/react')">React</a></li>
+          <li><a href="###" @click="renderArticle('/css')">CSS/SASS</a></li>
+          <li><a href="###" @click="renderArticle('/webpack')">Webpack</a></li>
+          <li><a href="###" @click="renderArticle('/mysql')">Mysql</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="">
+        这里放小标签
+      </div>
+      <section>
+        这里用瀑布流布局放好一篇又一篇的文章
+        <article v-for='item in dataGroup'>
+          <a href="###" >
+           <a :href="'http://localhost:8090/articlePage.html?articlePageId='+item.ID" :name='pageId' target="__blank">
+            <h1>{{item.ID}}</h1>
+            <h4>{{item.title}}</h4>
+            <p>{{item.intro}}</p>
+          </a>
+        </article>
+      </section>
+    </main>
+    <footer>
+    </footer>
+    <all />
+  </div>
+
+
+</body>
+
+</html>

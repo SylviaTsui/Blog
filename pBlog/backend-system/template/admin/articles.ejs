@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      text-decoration: none;
+      color: #91A4A9;
+      outline-style: none;
+    }
+
+    body {
+      padding: 0 50px;
+      background-color: #F4F7F8;
+      /* width: 1200px; */
+      min-width: 767px;
+    }
+
+    input,
+    textarea {
+      font-size: 12px;
+      padding-left: 3px;
+      border: 1px solid #CCCCCC;
+      display: block;
+      cursor: pointer;
+
+    }
+
+    textarea{
+      width:90%;
+    }
+
+    h4 {
+      font-weight: 400;
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    .dots {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #718396;
+      /* border-radius: 50%; */
+      vertical-align: middle;
+      margin-right: 3px;
+    }
+
+    header {
+      color: #374047;
+      margin-top: 30px;
+      display: inline-block;
+    }
+
+    #header {
+      display: inline-block;
+      color: #374047;
+      font-size: 40px;
+    }
+
+    #nav ul {
+      display: inline-block;
+      margin-bottom: 40px;
+
+    }
+
+    ul li {
+      margin-top: 10px;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 10px;
+      padding: 5px 15px;
+      background: #313654;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px #75889B;
+      transition: transform 100ms;
+    }
+
+    ul li:hover {
+      cursor: pointer;
+      transform: scale(1.02) translateY(-1px);
+    }
+
+    ul li a:hover {
+      color: #4BFF00;
+    }
+
+    .post a,
+    .comment a {
+      /* color:#374047; */
+      color: white;
+      font-size: 14px;
+    }
+
+    img {
+      width: 100px;
+      margin-top: 5px;
+    }
+
+    .newPost,
+    #database {
+      color: #374047;
+      font-size: 20px;
+      border-left: 4px solid #4BFF00;
+      padding-left: 5px;
+      font-weight: 400;
+    }
+
+    form {
+      margin-top: 15px;
+    }
+
+    .titleInput {
+      width: 400px;
+      height: 23px;
+    }
+
+    .introInput {
+      width: 402px;
+      height: 40px;
+    }
+
+    .articleInput {
+      width: 90%;
+    }
+
+    .illuInput {
+      border: none;
+      width: 200px;
+      height: 25px;
+    }
+
+    .addBtn {
+      padding: 3px 20px;
+      background: #333355;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px #75889B;
+    }
+
+    .addBtn:hover {
+      cursor: pointer;
+      transform: scale(1.02) translateY(-1px);
+      color: #4BFF00;
+    }
+
+    #contain {
+      width: 90%;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    #contain h3 {
+      margin-bottom: 20px;
+    }
+
+
+
+    table {
+      width: 1000px;
+      text-align: center;
+      border: 1px solid #e3e6e8;
+      border-right: none;
+      border-collapse: collapse;
+      table-layout: fixed;
+      display: table;
+
+    }
+
+    th,
+    td {
+      border: 1px solid #e3e6e8;
+      height: 38px;
+      line-height: 38px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: #6E8297;
+      color: #fff;
+    }
+
+    .btns {
+      border: none;
+    }
+
+    .mod,
+    .del,
+    .cancel {
+      padding: 5px 10px;
+      background: #62D17A;
+      color: white;
+      font-size: 12px;
+      border-radius: 5px;
+      margin: 0;
+      border: none;
+    }
+
+    .del,
+    .cancel {
+      background: #ED5A5A;
+    }
+
+    .mod-btn {
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    #mod-contain {
+      margin-bottom: 50px;
+    }
+
+    #mod-contain h3 {
+      color: #374047;
+      font-size: 20px;
+      border-left: 4px solid #4BFF00;
+      padding-left: 5px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <% include components/topbar.ejs%>
+    <main>
+      <div id='add'>
+        <label class='newPost'>Create a new post</label>
+        <form action="http://localhost:8090/admin/articles" method="post" enctype="multipart/form-data">
+          <span class='dots'></span>
+          <h4>Title</h4>
+          <input type="text" name="title" class='titleInput'>
+          <span class='dots'></span>
+          <h4>Introduction</h4>
+          <textarea name="intro" rows="3" cols="80" class='introInput'></textarea>
+          <span class='dots'></span>
+          <h4>Article</h4>
+          <textarea name="content" rows="15" cols="80" class='articleInput'></textarea>
+          <span class='dots'></span>
+          <h4>Illustration</h4>
+          <input type="file" name="picture" class='illuInput'>
+          <span class='dots'></span>
+          <h4>Type</h4>
+          <input type="text" name="type">
+          <span class='dots'></span>
+          <h4>Submit Date</h4>
+          <input type="text" name="date">
+          <input type="submit" value="Add" class='addBtn'>
+        </form>
+      </div>
+
+      <div id='mod-contain'>
+
+        <% if(typeof mod_data !== 'undefined') { %>
+          <form action="/admin/articles" method="post" enctype="multipart/form-data">
+            <h3>Modification</h3>
+            <input type="hidden" name="mod_id" value="<%= mod_data.ID %>">
+            <span class='dots'></span>
+            <h4>Title</h4>
+            <input type="text" name="title" value='<%= mod_data.title %>' class='titleInput'>
+            <span class='dots'></span>
+            <h4>Introduction</h4>
+            <textarea name="intro" rows="3" cols="80" class='introInput'><%= mod_data.intro %></textarea>
+            <span class='dots'></span>
+            <h4>Article</h4>
+            <textarea name="content" rows="15" cols="80" class='articleInput'><%= mod_data.content %></textarea>
+            <span class='dots'></span>
+            <h4>Illustration</h4>
+            <input type="file" name="picture" class='illuInput'>
+            <span class='dots'></span>
+            <h4>Type</h4>
+            <input type="text" name="type" value='<%= mod_data.type %>'>
+            <span class='dots'></span>
+            <h4>Submit Date</h4>
+            <input type="text" name="date" value='<%= mod_data.date %>'>
+            <input type="submit" value="Submit" class='mod mod-btn'>
+            <a href="/admin/articles" class='cancel mod-btn'>Cancel</a>
+          </form>
+          <% } %>
+      </div>
+
+      <div id='contain'>
+        <h3 id='database'>Database</h3>
+        <table>
+          <thead>
+
+            <th>ID</th>
+            <th>Title</th>
+            <th>Introduction</th>
+            <th>Article</th>
+            <th>Illustration</th>
+            <th>Type</th>
+            <th>Submit Date</th>
+
+          </thead>
+          <tbody class='dataTable-body'>
+            <% for(var i=0;i<article.length;i++) {%>
+              <tr>
+                <td class='num'>
+                  <%= article[i].ID%>
+                </td>
+                <td class='title'>
+                  <%= article[i].title%>
+                </td>
+                <td class='intro'>
+                  <%= article[i].intro%>
+                </td>
+                <td class='content'>
+                  <%= article[i].content%>
+                </td>
+                <td class='picture'><img src="/upload/<%= article[i].picture%>"></td>
+                <td class='type'>
+                  <%= article[i].type%>
+                </td>
+                <td class='date'>
+                  <%= article[i].date%>
+                </td>
+                <td class='btns'>
+                  <a class='mod' href="?act=mod&id=<%= article[i].ID%>">Modify</a>
+                  <a class='del' href="?act=del&id=<%= article[i].ID%>">Delete</a>
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </main>
+</body>
+
+</html>
