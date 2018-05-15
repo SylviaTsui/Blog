@@ -30,7 +30,7 @@
     <h4 id='subtitle'>BLOG POSTS</h4>
     <div id='linkWrapper'>
       <a href='https://github.com/SylviaTsui' target='_blank' class='link github'><img src='../static/img/github.png' class='link github'></a>
-      <a href='https://codepen.io/Sylvia31/' target='_blank' class='link codepen'><img src='../static/img/codepen.png' class='link codepen'></a>
+      <a href='https://codepen.io/Sylvia_Tsui/' target='_blank' class='link codepen'><img src='../static/img/codepen.png' class='link codepen'></a>
       <a class='wechat'><img src='../static/img/wechat.png' class='link wechat'></a>
       <a class='email'><img src='../static/img/email.png' class='link email'></a>
       <a><img src='../static/img/stackoverflow.png' class='link nohover'></a>
